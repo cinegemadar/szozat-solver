@@ -11,7 +11,7 @@ app = FastAPI()
 
 
 @app.post("/guess")
-async def post_guess(words: list[list]):  # TODO move to solver_server
+async def post_guess(words: list[list]):
     """This function show how to parse words data from JSON payload and get the next guess."""
     if not len(words):
         return start()
