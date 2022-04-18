@@ -1,5 +1,7 @@
 # Szozat & wordle solver
 
+Hosted on [Heroku](https://polar-fortress-90021.herokuapp.com/guess)
+
 ## Components
 - Core
 - CLI
@@ -15,3 +17,6 @@ python3 -m pip install uvicorn
 ```bash
 uvicorn solver_server:app --reload
 ```
+
+## test
+[This](https://reqbin.com/c-wis5fajj) is a test request to the app running on Heroku
