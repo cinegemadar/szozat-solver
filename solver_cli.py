@@ -31,9 +31,9 @@ def nextGuess(
     hints = list(sorted(hints))
     result = []
     if single and hints:
-        result = ["".join(sample(hints, 1)[0])]
+        result = [",".join(sample(hints, 1)[0])]
     else:
-        result = [ "".join(hint) for hint in hints]
+        result = [ ",".join(hint) for hint in hints]
     if print:
         typer.echo("\n".join(result))
     return result
