@@ -11,7 +11,7 @@ app = FastAPI()
 
 
 @app.post("/guess")
-async def get_guess(words: list[list]):  # TODO move to solver_server
+async def post_guess(words: list[list]):  # TODO move to solver_server
     """This function show how to parse words data from JSON payload and get the next guess."""
     if not len(words):
         return start()
@@ -48,5 +48,5 @@ if __name__ == "__main__":  # Test
         ["a", 1, "b", 2, "c", 3, "d", 3, "e", 1],
         ["a", 1, "b", 2, "c", 3, "d", 3, "e", 1],
     ]
-    res = asyncio.run(get_guess(payload))
+    res = asyncio.run(post_guess(payload))
     print(res)
