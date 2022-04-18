@@ -14,6 +14,6 @@ if __name__ == "__main__":
     with open('./test_payload.json','r') as fp:
         data=json.load(fp)
         # print(data)
-        result = requests.post('https://172.104.146.219:8000/guess', json=data)
+        result = requests.post('http://127.0.0.1:8000/guess', json=data)
         # print(result)
         print(f"==[ result: {result.json()}")
