@@ -33,7 +33,7 @@ async def post_guess(words: list[list]):
         exclude=join_by_coma(gs.exclude),
         include=join_by_coma(gs.include),
         posExclude=join_by_coma(gs.wrongplace),
-        single=False,
+        single=True,
     )
 
 
