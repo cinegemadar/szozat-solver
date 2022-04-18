@@ -32,6 +32,7 @@ class GuessState:
 
     def add_green_letter(self, letter, index):
         self.pattern[index] = letter
+        self.exclude.discard(letter)
 
 def match(pattern, word, wildcard=".", delimiter=","):
     pattern = pattern.split(delimiter)
