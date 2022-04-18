@@ -26,9 +26,10 @@ class GuessState:
         self.include.add(letter)
         self.wrongplace.add(f"{letter},{index}")
 
-    def add_grey_letter(self, letter):
+    def add_grey_letter(self, letter, index):
         if not letter in self.include:
             self.exclude.add(letter)
+            self.wrongplace.add(f"{letter},{index}")
 
     def add_green_letter(self, letter, index):
         self.pattern[index] = letter

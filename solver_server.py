@@ -27,7 +27,7 @@ async def post_guess(words: list[list]):
                 gs.add_yellow_letter(letter, int(i / 2) + 1)
                 continue
             if color == 3:  # GREY
-                gs.add_grey_letter(letter)
+                gs.add_grey_letter(letter, int(i / 2) + 1)
     return nextGuess(
         pattern=join_by_coma(gs.pattern),
         exclude=join_by_coma(gs.exclude),
