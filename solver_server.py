@@ -5,6 +5,7 @@ from solver import GuessState, join_by_coma
 from solver_cli import nextGuess, start
 
 # HOW TO
+# see README.MD
 # see: https://fastapi.tiangolo.com/tutorial/first-steps/
 # uvicorn solver_server:app --reload
 
