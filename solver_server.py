@@ -39,11 +39,8 @@ async def post_table_state(words: list[list]):
 
 if __name__ == "__main__":  # Test
     import asyncio
+    import json
 
-    payload = [
-        ["gy", 3, "ö", 3, "ny", 3, "ö", 3, "r", 1],
-        ["z", 3, "o", 3, "b", 3, "o", 1, "r", 1],
-        ["k", 3, "ő", 1, "p", 1, "o", 1, "r", 1],
-    ]
-    res = asyncio.run(post_table_state(payload))
-    print(res)
+    with open("./test_payload.json", "r") as fp:
+        result = asyncio.run(post_table_state(json.load(fp)))
+        print(result)
