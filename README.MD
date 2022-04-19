@@ -1,6 +1,6 @@
 # Szozat & wordle solver
 
-Hosted on [Heroku](https://polar-fortress-90021.herokuapp.com/docs)
+Hosted on [Heroku](https://szozat-wordle-solver.herokuapp.com/docs)
 
 ## Components
 - Core
