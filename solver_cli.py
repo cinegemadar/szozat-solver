@@ -7,6 +7,7 @@ import typer
 
 app = typer.Typer()
 
+
 @app.command()
 def start():
     """Sugguest initial guess."""
@@ -20,7 +21,7 @@ def nextGuess(
     include: str = None,
     posExclude: str = None,
     single: bool = False,
-    print: bool = False
+    print: bool = False,
 ):
     """Suggest next guess based on current state."""
     posExcludeDict = solver.string_param_to_dict(posExclude)
@@ -33,10 +34,11 @@ def nextGuess(
     if single and hints:
         result = [",".join(sample(hints, 1)[0])]
     else:
-        result = [ ",".join(hint) for hint in hints]
+        result = [",".join(hint) for hint in hints]
     if print:
         typer.echo("\n".join(result))
     return result
+
 
 if __name__ == "__main__":
     app()

@@ -11,8 +11,8 @@ app = FastAPI()
 
 
 @app.post("/guess")
-async def post_guess(words: list[list]):
-    """This function show how to parse words data from JSON payload and get the next guess."""
+async def post_table_state(words: list[list]):
+    """Send the current state of the board to the server and recieve the next guess."""
     if not len(words):
         return start()
     gs = GuessState()
@@ -41,12 +41,9 @@ if __name__ == "__main__":  # Test
     import asyncio
 
     payload = [
-        ["a", 1, "b", 2, "c", 3, "d", 3, "e", 1],
-        ["a", 1, "b", 2, "c", 3, "d", 3, "e", 1],
-        ["a", 1, "b", 2, "c", 3, "d", 3, "e", 1],
-        ["a", 1, "b", 2, "c", 3, "d", 3, "e", 1],
-        ["a", 1, "b", 2, "c", 3, "d", 3, "e", 1],
-        ["a", 1, "b", 2, "c", 3, "d", 3, "e", 1],
+        ["gy", 3, "ö", 3, "ny", 3, "ö", 3, "r", 1],
+        ["z", 3, "o", 3, "b", 3, "o", 1, "r", 1],
+        ["k", 3, "ő", 1, "p", 1, "o", 1, "r", 1],
     ]
-    res = asyncio.run(post_guess(payload))
+    res = asyncio.run(post_table_state(payload))
     print(res)

@@ -1,8 +1,10 @@
 from random import sample
 from collections import defaultdict
 
+
 def join_by_coma(container):
     return ",".join(container)
+
 
 def string_param_to_dict(param: str):
     resultDict = defaultdict(lambda: [])
@@ -11,6 +13,7 @@ def string_param_to_dict(param: str):
         for i in range(0, len(tmpList), 2):
             resultDict[tmpList[i]].append(tmpList[i + 1])
     return resultDict
+
 
 class GuessState:
     """Keep track of the state of all the guesses."""
@@ -35,6 +38,7 @@ class GuessState:
         self.pattern[index] = letter
         self.exclude.discard(letter)
 
+
 def match(pattern, word, wildcard=".", delimiter=","):
     pattern = pattern.split(delimiter)
     if "".join(pattern) == "".join(len(word) * wildcard):
@@ -48,7 +52,7 @@ def match(pattern, word, wildcard=".", delimiter=","):
 
 
 def has(letters, word):
-    """ Indicates that list of letters must be in the solution."""
+    """Indicates that list of letters must be in the solution."""
     if not letters:
         return True
     for l in letters.split(","):
@@ -58,7 +62,7 @@ def has(letters, word):
 
 
 def excludes(letters, word):
-    """ Indicates that list of letters must not be in the solution."""
+    """Indicates that list of letters must not be in the solution."""
     if not letters:
         return True
     for l in letters.split(","):
@@ -68,7 +72,7 @@ def excludes(letters, word):
 
 
 def not_at(pos_dicts, word):
-    """ Indicates that list of letters must not be at given index in the solution."""
+    """Indicates that list of letters must not be at given index in the solution."""
     for k, v in pos_dicts.items():
         for i in v:
             if word[int(i) - 1] == k:
@@ -77,5 +81,5 @@ def not_at(pos_dicts, word):
 
 
 def startword(words):
-    """ Returns random start word. """
+    """Returns random start word."""
     return sample(words, 1)[0]
