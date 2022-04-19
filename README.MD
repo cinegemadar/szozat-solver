@@ -20,6 +20,7 @@ uvicorn solver_server:app --reload
 
 ## test
 [This](https://reqbin.com/c-wis5fajj) is a test request to the app running on Heroku
+
 Or you can test locally
 ```bash
 python solver_server.py
