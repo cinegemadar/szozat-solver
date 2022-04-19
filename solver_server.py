@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+import asyncio
 
 from solver import GuessState, join_by_coma
 from solver_cli import nextGuess, start
@@ -8,6 +9,15 @@ from solver_cli import nextGuess, start
 # uvicorn solver_server:app --reload
 
 app = FastAPI()
+
+
+@app.post("/test")
+async def post_test():
+    """Post test endpoint."""
+    import json
+
+    with open("./test_payload.json", "r") as fp:
+        return await post_table_state(json.load(fp))
 
 
 @app.post("/guess")
@@ -38,9 +48,4 @@ async def post_table_state(words: list[list]):
 
 
 if __name__ == "__main__":  # Test
-    import asyncio
-    import json
-
-    with open("./test_payload.json", "r") as fp:
-        result = asyncio.run(post_table_state(json.load(fp)))
-        print(result)
+    print(asyncio.run(post_test()))
