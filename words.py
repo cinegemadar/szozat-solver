@@ -1,4 +1,21 @@
-WORDS = [
+import urllib.request
+import json
+
+
+success = False
+
+openUrl = urllib.request.urlopen(
+    "https://raw.githubusercontent.com/mdanka/szozat/main/src/constants/hungarian-word-letter-list.json"
+)
+if openUrl.getcode() == 200:
+    data = openUrl.read()
+    WORDS = json.loads(data)
+    success = True
+else:
+    WORDS = WORDS_CACHE
+
+# TODO: move cache to separate file and update when connection successful.
+WORDS_CACHE = [
     ["sz", "i", "r", "k", "a"],
     ["v", "i", "h", "o", "g"],
     ["r", "\xfa", "b", "e", "n"],
@@ -8661,3 +8678,7 @@ WORDS = [
     ["dzs", "a", "dzs", "\xe1", "l"],
     ["zs", "i", "v", "a", "j"],
 ]
+
+if __name__ == "__main__":
+    print(WORDS[:10])
+    print(f"Connection succeeded: {success}")
