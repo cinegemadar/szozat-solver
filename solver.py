@@ -3,15 +3,24 @@ from collections import defaultdict
 
 
 def join_by_coma(container):
+    """
+    >>> join_by_coma(['1','2','3','4']) == "1,2,3,4"
+    True
+    """
     return ",".join(container)
 
 
 def string_param_to_dict(param: str):
+    """
+    >>> dict(string_param_to_dict("a,1,b,2"))
+    {'a': ['1'], 'b': ['2']}
+    """
     resultDict = defaultdict(lambda: [])
     if param:
         tmpList = param.split(",")
-        for i in range(0, len(tmpList), 2):
-            resultDict[tmpList[i]].append(tmpList[i + 1])
+        for index, element in enumerate(tmpList):
+            if (index % 2) == 0:
+                resultDict[element].append(tmpList[index + 1])
     return resultDict
 
 
@@ -30,11 +39,14 @@ class GuessState:
         self.wrongplace.add(f"{letter},{index}")
 
     def add_grey_letter(self, letter, index):
+        """
+        """
         if not letter in self.include:
             self.exclude.add(letter)
             self.wrongplace.add(f"{letter},{index}")
 
     def add_green_letter(self, letter, index):
+        self.include.add(letter)
         self.pattern[index] = letter
         self.exclude.discard(letter)
 
@@ -83,3 +95,7 @@ def not_at(pos_dicts, word):
 def startword(words):
     """Returns random start word."""
     return sample(words, 1)[0]
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod(extraglobs={'t':GuessState()})

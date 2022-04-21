@@ -14,7 +14,10 @@ app = FastAPI()
 
 @app.post("/test")
 async def post_test():
-    """Post test endpoint."""
+    """Post test endpoint.
+    >>> asyncio.run(post_test())
+    ['l,ő,p,o,r']
+    """
     import json
 
     with open("./test_payload.json", "r") as fp:
@@ -49,4 +52,6 @@ async def post_table_state(words: list[list]):
 
 
 if __name__ == "__main__":  # Test
+    import doctest
+    doctest.testmod()
     print(asyncio.run(post_test()))
