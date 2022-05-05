@@ -40,10 +40,15 @@ class GuessState:
 
     def add_grey_letter(self, letter, index):
         """
+        >>> t.add_grey_letter('a',1)
+        >>> 'a' in t.exclude
+        True
+        >>> 'a,1' in t.wrongplace
+        True
         """
         if not letter in self.include:
             self.exclude.add(letter)
-            self.wrongplace.add(f"{letter},{index}")
+        self.wrongplace.add(f"{letter},{index}")
 
     def add_green_letter(self, letter, index):
         self.include.add(letter)
@@ -64,7 +69,14 @@ def match(pattern, word, wildcard=".", delimiter=","):
 
 
 def has(letters, word):
-    """Indicates that list of letters must be in the solution."""
+    """Indicates that list of letters must be in the solution.
+    >>> has("","alma")
+    True
+    >>> has("m","alma")
+    True
+    >>> has("a","korte")
+    False
+    """
     if not letters:
         return True
     for l in letters.split(","):
