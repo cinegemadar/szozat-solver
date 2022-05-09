@@ -6,7 +6,7 @@ success = False
 
 try:
     openUrl = urllib.request.urlopen(
-        "https://raw.githubusercontent.com/mdanka/szozat/main/src/constants/hungarian-word-letter-list.json"
+        "https://raw.githubusercontent.com/mdanka/szozat/main/src/constants/hungarian-word-letter-listL.json"
     )
 except urllib.error.HTTPError:
     openUrl = None

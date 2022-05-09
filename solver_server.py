@@ -37,7 +37,6 @@ async def post_test():
 @app.post("/guess")
 async def post_table_state(words: list[list]):
     """Send the current state of the board to the server and recieve the next guess."""
-    print(words)
     if not len(words):
         return start()
     gs = GuessState()
