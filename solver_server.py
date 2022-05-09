@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 import asyncio
 
 from solver import GuessState, join_by_coma
@@ -11,6 +12,15 @@ from solver_cli import nextGuess, start
 
 app = FastAPI()
 
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.post("/test")
 async def post_test():
@@ -27,6 +37,7 @@ async def post_test():
 @app.post("/guess")
 async def post_table_state(words: list[list]):
     """Send the current state of the board to the server and recieve the next guess."""
+    print(words)
     if not len(words):
         return start()
     gs = GuessState()
